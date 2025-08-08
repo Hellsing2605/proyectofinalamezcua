@@ -1,0 +1,27 @@
+# PHP / Composer
+/vendor/
+/composer.lock
+
+# Node (si existiera)
+/node_modules/
+/package-lock.json
+
+# Entornos / secretos
+.env
+.env.local
+*.log
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# XAMPP / uploads
+uploads/
+tmp/
+cache/
+
+# Docker
+db_data/
+*.pid

@@ -8,3 +8,12 @@
 ### Notas
 - Esta versión es compatible con MySQL 5.7 y PHP 7.4.
 - Se recomienda ejecutar `docker-compose down && docker-compose up -d --build` para actualizar la imagen.
+## [1.0.1] - 2025-08-08
+### Cambios
+- Fix: superposición del menú de usuario en `products.php`.
+- Fix: warnings de índices indefinidos (`supplier`, `categorie`) en búsquedas.
+- Mejora: consultas SQL más eficientes en listado y búsqueda.
+- Docker: conexión estable a DB (`DB_HOST=db`, `DB_PASS=root`).
+
+### Notas
+- Compatible con MySQL 5.7 y PHP 7.4–8.2.

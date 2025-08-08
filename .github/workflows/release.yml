@@ -25,10 +25,9 @@ jobs:
           echo "Linting PHP files..."
           ! find . -type f -name "*.php" -print0 | xargs -0 -I{} php -l "{}" | grep "Errors parsing"
 
-      # Descomenta si usas Composer y/o PHPUnit
+      # Descomenta si usas Composer y PHPUnit
       # - name: Install dependencies
       #   run: composer install --no-interaction --no-progress
-
       # - name: Run tests (PHPUnit)
       #   run: vendor/bin/phpunit --testdox
 
@@ -47,7 +46,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Read version
+      - name: Read version from tag
         id: ver
         run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
@@ -57,8 +56,8 @@ jobs:
           tag_name: ${{ steps.ver.outputs.version }}
           name: Release ${{ steps.ver.outputs.version }}
           body: |
-            Release generado por pipeline.
-            Consulte CHANGELOG.md para notas de versión.
+            Release generado automáticamente por GitHub Actions.
+            Consulta CHANGELOG.md para las notas de versión.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

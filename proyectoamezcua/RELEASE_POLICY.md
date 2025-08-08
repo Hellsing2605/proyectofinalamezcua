@@ -1,30 +1,25 @@
 # Política de Liberación (Release Policy)
 
 ## Versionado
-- Usamos **semver**: `MAJOR.MINOR.PATCH` (ej. `1.2.0`).
-- El número de versión actual vive en `VERSION.txt`.
+- Semántico (semver): `MAJOR.MINOR.PATCH` (ej. `1.0.1`).
+- La versión viva está en `VERSION.txt`.
 
 ## Criterios para liberar
-- [ ] Todas las pruebas pasan en CI (lint PHP y tests si existen).
-- [ ] Revisión y aprobación de **2 revisores** en Pull Request.
-- [ ] QA valida funcionalidad mínima (login, productos, usuarios).
-- [ ] Documentación actualizada: `README.md` y `CHANGELOG.md`.
-- [ ] Se actualizó `VERSION.txt` y se generó tag `vX.Y.Z`.
+- [ ] CI en GitHub Actions pasa (lint y tests si existen).
+- [ ] Pull Request hacia `main` con **2 aprobaciones**.
+- [ ] QA deja comentario “QA OK vX.Y.Z” en la PR.
+- [ ] `README.md` y `CHANGELOG.md` actualizados.
+- [ ] `VERSION.txt` actualizado.
+- [ ] Tag anotado `vX.Y.Z` creado y Release generado.
 
-## Flujo de PR y Merge
+## Flujo de release
 1. Crear rama `release/x.y.z` desde `main`.
-2. Abrir Pull Request → **2 aprobaciones**.
-3. CI debe pasar.
-4. QA firma en comentarios de la PR (texto: “QA OK vX.Y.Z”).
-5. Merge por **squash** a `main`.
-
-## Tag y Release
-- Crear tag **anotado** `vX.Y.Z`.
-- Generar **GitHub Release** con notas del `CHANGELOG.md`.
-- Adjuntar evidencia (capturas del pipeline y pruebas).
+2. Actualizar `VERSION.txt` y `CHANGELOG.md`.
+3. Abrir PR → 2 approvals + CI OK.
+4. Merge (squash) a `main`.
+5. Crear tag `vX.Y.Z` y publicar Release.
 
 ## Responsables
-- **Líder técnico**: autoriza el merge final.
-- **QA**: valida check-list de pruebas y firma release.
-- **Dev**: mantiene CHANGELOG y bump de versión.
-
+- **Líder técnico**: autoriza merge final.
+- **QA**: valida y comenta “QA OK vX.Y.Z”.
+- **Dev**: mantiene `CHANGELOG.md` y `VERSION.txt`.

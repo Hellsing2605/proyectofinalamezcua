@@ -1,0 +1,21 @@
+name: Tag from VERSION.txt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read VERSION.txt
+        id: ver
+        run: echo "version=v$(cat VERSION.txt | tr -d '\n' | tr -d '\r')" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        run: |
+          git tag ${{ steps.ver.outputs.version }}
+          git push origin ${{ steps.ver.outputs.version }}

@@ -13,9 +13,9 @@ jobs:
 
       - name: Read VERSION.txt
         id: ver
-        run: echo "version=v$(cat VERSION.txt | tr -d '\n' | tr -d '\r')" >> $GITHUB_OUTPUT
+        run: echo "version=v$(tr -d '\n\r' < VERSION.txt)" >> $GITHUB_OUTPUT
 
-      - name: Create tag
+      - name: Create and push tag
         run: |
           git tag ${{ steps.ver.outputs.version }}
           git push origin ${{ steps.ver.outputs.version }}
